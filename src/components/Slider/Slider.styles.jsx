@@ -8,10 +8,9 @@ export const Slider = styled.div`
   height: 768px;
   margin: auto;
   transform: translate(-50%, -50%);
-  outline: 1px dashed red;
 `;
 
-export const SliderList = styled.ul`
+export const SliderItemsList = styled.ul`
   width: inherit;
   height: inherit;
   margin: 0;
@@ -21,16 +20,5 @@ export const SliderList = styled.ul`
   div {
     width: inherit;
     height: inherit;
-  }
-`;
-
-export const SliderItem = styled.li`
-  width: inherit;
-  height: inherit;
-
-  > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 `;

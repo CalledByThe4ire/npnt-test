@@ -1,15 +1,20 @@
 import React from 'react';
-import { GlobalStyle } from './styles';
-import { GlobalFonts } from './assets/fonts';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import Slider from './components/Slider/Slider';
 
 const App = () => {
   return (
-    <React.Fragment>
-      <GlobalFonts />
-      <GlobalStyle />
-      <Slider />
-    </React.Fragment>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Slider} />
+        <Redirect to="/" />
+      </Switch>
+    </Router>
   );
 };
 
