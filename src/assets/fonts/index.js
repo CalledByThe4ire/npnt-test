@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components/macro';
 
 import DINProWoff from './DINPro.woff';
 import DINProWoff2 from './DINPro.woff2';
+import DINProBoldWoff from './DINPro-Bold.woff';
+import DINProBoldWoff2 from './DINPro-Bold.woff2';
 import GilroyLightWoff from './Gilroy-Light.woff';
 import GilroyLightWoff2 from './Gilroy-Light.woff2';
 import GilroyRegularWoff from './Gilroy-Regular.woff';
@@ -16,6 +18,15 @@ export const GlobalFonts = createGlobalStyle`
     url(${DINProWoff2}) format('woff2'),
     url(${DINProWoff}) format('woff');
     font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'DINPro';
+    src: local('DINPro'),
+    url(${DINProBoldWoff2}) format('woff2'),
+    url(${DINProBoldWoff}) format('woff');
+    font-weight: 700;
     font-style: normal;
   }
 
