@@ -59,7 +59,7 @@ export const IntroTitle = styled.h1`
     flex-basis: 100%;
   }
 
-  b {
+  strong {
     font-family: 'Gilroy', Arial, sans-serif;
     font-weight: 800;
     font-style: normal;

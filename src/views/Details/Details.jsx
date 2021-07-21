@@ -1,14 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import CustomScroll from 'react-custom-scroll';
 import 'react-custom-scroll/dist/customScroll.css';
 import {
   Details,
   DetailsTitle,
-  DetailsText as p,
   DetailsPanel,
-  DetailsPanelInner,
   DetailsPanelContent,
   DetailsPanelText,
   DetailsElements,
@@ -30,6 +29,7 @@ import sperm5Image from '../../assets/images/details/details__element--sperm5.pn
 import sperm5ImageRetina from '../../assets/images/details/details__element--sperm5@2x.png';
 
 export default () => {
+  const { t } = useTranslation();
   const panelContentRef = useRef(null);
   const panelTextRef = useRef(null);
   const [hasScroll, setHasScroll] = useState(false);
@@ -88,7 +88,6 @@ export default () => {
         сообщения
       </DetailsTitle>
       <DetailsPanel className="panel" hasScroll={hasScroll}>
-        <DetailsPanelInner className="panel__inner" hasScroll={hasScroll}>
           <CustomScroll allowOuterScroll={true} rtl={true}>
             <DetailsPanelContent
               className="panel__content"
@@ -98,44 +97,13 @@ export default () => {
                 className="panel__text"
                 ref={panelTextRef}
                 hasScroll={hasScroll}
+                dangerouslySetInnerHTML={{
+                  __html: t('slider.details.text', { returnObjects: true }).join('')
+                }}
               >
-                <p>
-                  <b>Сперматозoид</b>&nbsp;(от&nbsp;др.-греч.
-                  &sigma;&pi;έ&rho;&mu;&alpha; род.&nbsp;п.
-                  &sigma;&pi;έ&rho;&mu;&alpha;&tau;&omicron;&sigmaf; здесь
-                  &laquo;сперма&raquo; + &zeta;&omega;ή &laquo;жизнь&raquo; +
-                  &epsilon;ἶ&delta;&omicron;&sigmaf; &laquo;вид, облик&raquo;,
-                  лат. spermatozoon, spermium)&nbsp;&mdash; мужская половая
-                  клетка (гамета) размножающихся посредством оогамии организмов.
-                  Сперматозоиды обычно обладают способностью к&nbsp;активному
-                  движению и&nbsp;служат для оплодотворения женской
-                  гаметы&nbsp;&mdash; яйцеклетки. Обычно они значительно меньше
-                  яйцеклеток, поскольку не&nbsp;содержат столь значительного
-                  количества цитоплазмы и&nbsp;производятся организмом
-                  одновременно в&nbsp;значительном количестве[1].
-                </p>
-                <p>
-                  Типичное строение сперматозоида отражает форму общего предка
-                  животных и&nbsp;грибов: одноклеточный ядерный организм,
-                  передвигающийся за&nbsp;счёт жгутика в&nbsp;задней части,
-                  используя его подобно хвосту. Обширная группа происходящих
-                  от&nbsp;него организмов включает в&nbsp;себя животных,
-                  большинство грибов и&nbsp;некоторые группы протистов
-                  и&nbsp;называется кланом заднежгутиковых. Большинство других
-                  эукариот со&nbsp;жгутиками имеют их&nbsp;в&nbsp;передней
-                  части.
-                </p>
-                <p>
-                  В&nbsp;широком смысле слова по&nbsp;традиции сперматозоидами
-                  иногда называют мужские половые клетки также у&nbsp;растений,
-                  к&nbsp;ним применяют также термины спермии или антерозоиды
-                  (их&nbsp;применяют также к&nbsp;традиционно сближавшимся
-                  с&nbsp;растениями грибам).
-                </p>
               </DetailsPanelText>
             </DetailsPanelContent>
           </CustomScroll>
-        </DetailsPanelInner>
       </DetailsPanel>
     </Details>
   );

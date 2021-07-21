@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import {
   Intro,
@@ -29,6 +30,7 @@ import SpermImageRetina from '../../assets/images/intro/intro__element--sperm@2x
 import { next } from '../../store/slider/slider.slice';
 
 export default () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const handleClick = () => dispatch(next());
 
@@ -71,14 +73,11 @@ export default () => {
           height="93"
         ></IntroElementSperm>
       </IntroElements>
-      <IntroLead className="intro__lead">привет,</IntroLead>
-      <IntroTitle className="intro__title">
-        <span>
-          это&nbsp;<b>не</b>
-        </span>
-        <span>коммерческое</span>
-        <span>задание</span>
-      </IntroTitle>
+      <IntroLead className="intro__lead">{t('slider.intro.lead')}</IntroLead>
+      <IntroTitle
+        className="intro__title"
+        dangerouslySetInnerHTML={{ __html: t('slider.intro.title') }}
+      ></IntroTitle>
       <IntroLink to="/" onClick={handleClick} className="intro__link">
         <Icon name="arrow" width={20} height={14} />
         <span>Что дальше?</span>

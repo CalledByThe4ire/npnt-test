@@ -81,6 +81,8 @@ export const DetailsPanel = styled.div.attrs(({ className }) => {
 })`
   position: relative;
   display: block;
+  padding: 30px;
+  padding-left: ${(props) => (props.hasScroll ? 0 : null)};
 
   &.panel {
     width: auto;
@@ -135,26 +137,6 @@ export const DetailsPanel = styled.div.attrs(({ className }) => {
   }
 `;
 
-export const DetailsPanelInner = styled.div`
-  position: relative;
-  padding: 30px;
-  padding-left: ${(props) => (props.hasScroll ? 0 : null)};
-
-  &::after {
-    content: '';
-    z-index: 10;
-    position: absolute;
-    top: 0;
-    left: 60px;
-    display: ${(props) => (props.hasScroll ? 'block' : 'none')};
-    width: calc(100% - 60px);
-    height: 100%;
-    border-radius: 40px;
-    background-image: linear-gradient(to top, #ffffff 0%, transparent 25%);
-    transition: all 0.3s ease-in-out;
-  }
-`;
-
 export const DetailsPanelContent = styled.div`
   max-height: 385px;
 `;
@@ -175,6 +157,7 @@ export const DetailsPanelText = styled.div`
     margin: 0;
     padding: 0;
     padding-left: ${(props) => (props.hasScroll ? '90px' : null)};
+    direction: ltr;
     transition: inherit;
   }
 
