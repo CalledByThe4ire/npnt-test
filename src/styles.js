@@ -11,3 +11,12 @@ export const GlobalStyle = createGlobalStyle`
 
   ${normalize}
 `;
+
+export const theme = {
+  colors: {
+    primary: '#fb6da3',
+    secondary: '#8cc9e8',
+    black: '#242424',
+    white: '#ffffff',
+  }
+}

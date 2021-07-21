@@ -34,26 +34,11 @@ export const SlideFooter = styled.footer`
 
   > a {
     svg {
-      fill: #272727;
+      fill: ${({ theme: { colors } }) => colors.black};
       transition: all 0.3s ease;
 
       & > path {
         transition: inherit;
-      }
-    }
-
-    &:hover {
-      svg {
-        & > path {
-          fill: #3fc2fd;
-        }
-      }
-    }
-    &:active {
-      svg {
-        & > path {
-          fill: #118bbb;
-        }
       }
     }
   }

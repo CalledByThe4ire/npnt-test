@@ -34,7 +34,7 @@ export const NavListItem = styled.li`
     display: block;
     width: 2px;
     height: 100%;
-    background-color: #272727;
+    background-color: ${({ theme: { colors } }) => colors.black};
     transition: all 0.3s ease-in-out;
   }
 
@@ -52,21 +52,6 @@ export const NavListItem = styled.li`
       & > path {
         transition: inherit;
       }
-    }
-
-    &:hover {
-      svg {
-        & > path {
-          fill: #ffffff;
-          stroke: #ffffff;
-        }
-      }
-    }
-  }
-
-  &:hover {
-    &::after {
-      background-color: #ffffff;
     }
   }
 `;

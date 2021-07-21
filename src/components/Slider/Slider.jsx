@@ -3,8 +3,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
+import { ThemeProvider } from 'styled-components/macro';
 
-import { GlobalStyle } from '../../styles';
+import { GlobalStyle, theme } from '../../styles';
 import { GlobalFonts } from '../../assets/fonts';
 import { Slider, SliderItemsList } from './Slider.styles.jsx';
 import Slide from '../Slide/Slide.jsx';
@@ -20,22 +21,24 @@ export default () => {
     <>
       <GlobalStyle />
       <GlobalFonts />
-      <Slider className="slider">
-        <SliderItemsList className="slider__list">
-          <SwipeableViews
-            index={currentIndex}
-            onChangeIndex={handleChangeIndex}
-          >
-            {items.map((element, index) => {
-              return (
-                <Slide key={element.id}>
-                  <View name={element.name} />
-                </Slide>
-              );
-            })}
-          </SwipeableViews>
-        </SliderItemsList>
-      </Slider>
+      <ThemeProvider theme={theme}>
+        <Slider className="slider">
+          <SliderItemsList className="slider__list">
+            <SwipeableViews
+              index={currentIndex}
+              onChangeIndex={handleChangeIndex}
+            >
+              {items.map((element, index) => {
+                return (
+                  <Slide key={element.id}>
+                    <View name={element.name} />
+                  </Slide>
+                );
+              })}
+            </SwipeableViews>
+          </SliderItemsList>
+        </Slider>
+      </ThemeProvider>
     </>
   );
 };

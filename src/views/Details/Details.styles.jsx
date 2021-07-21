@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { darken, lighten } from 'polished';
 import SuperQuery from '@themgoncalves/super-query';
 import detailsBgImage from '../../assets/images/details/details__bg.png';
 import detailsBgImageRetina from '../../assets/images/details/details__bg@2x.png';
@@ -15,7 +16,8 @@ export const Details = styled.section`
   padding-right: 130px;
   padding-bottom: 80px;
   padding-left: 65px;
-  background: url(${detailsBgImage}) #fff no-repeat center center / contain;
+  background: url(${detailsBgImage}) ${({ theme: { colors } }) => colors.white}
+    no-repeat center center / contain;
   overflow: hidden;
 
   ${SuperQuery().minResolution.of('192dpi').css`
@@ -71,7 +73,7 @@ export const DetailsTitle = styled.h2`
   font-style: normal;
   font-size: 27px;
   line-height: 1.2;
-  color: #242424;
+  color: ${({ theme: { colors } }) => colors.black};
   text-transform: uppercase;
   letter-spacing: 2px;
 `;
@@ -100,11 +102,27 @@ export const DetailsPanel = styled.div.attrs(({ className }) => {
 
     .rcs-inner-handle {
       display: inline-block;
-      background-image: linear-gradient(to right, #96436f 0%, transparent 45%),
-        linear-gradient(to left, #e6a9c5 0%, transparent 45%),
-        linear-gradient(to top, #e6a9c5 0%, transparent 5%),
-        linear-gradient(to bottom, #96436f 0%, transparent 5%);
-      background-color: #ff6a9f;
+      background-image: linear-gradient(
+          to right,
+          ${({ theme: { colors } }) => darken(0.4, colors.primary)} 0%,
+          transparent 45%
+        ),
+        linear-gradient(
+          to left,
+          ${({ theme: { colors } }) => lighten(0.25, colors.primary)} 0%,
+          transparent 45%
+        ),
+        linear-gradient(
+          to top,
+          ${({ theme: { colors } }) => lighten(0.25, colors.primary)} 0%,
+          transparent 5%
+        ),
+        linear-gradient(
+          to bottom,
+          ${({ theme: { colors } }) => darken(0.4, colors.primary)} 0%,
+          transparent 5%
+        );
+      background-color: ${({ theme: { colors } }) => colors.primary};
       border-radius: 20px;
       cursor: pointer;
     }
@@ -119,7 +137,7 @@ export const DetailsPanel = styled.div.attrs(({ className }) => {
     width: 5px;
     height: calc(100% - 60px);
     border-radius: 5px;
-    background-color: #242424;
+    background-color: ${({ theme: { colors } }) => colors.black};
     transition: all 0.3s ease-in-out;
   }
 
@@ -132,7 +150,7 @@ export const DetailsPanel = styled.div.attrs(({ className }) => {
     width: ${(props) => (props.hasScroll ? 'calc(100% - 60px)' : '100%')};
     height: 100%;
     border-radius: 40px;
-    background-color: #ffffff;
+    background-color: ${({ theme: { colors } }) => colors.white};
     transition: all 0.3s ease-in-out;
   }
 `;
@@ -150,7 +168,7 @@ export const DetailsPanelText = styled.div`
   font-style: normal;
   font-size: 22px;
   line-height: 30px;
-  color: #242424;
+  color: ${({ theme: { colors } }) => colors.black};
   transition: all 0.3s ease-in-out;
 
   p {

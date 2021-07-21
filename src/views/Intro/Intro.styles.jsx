@@ -16,7 +16,8 @@ export const Intro = styled.section`
   height: inherit;
   padding-top: 165px;
   padding-left: 65px;
-  background: url(${introBgImage}) #fff no-repeat center center / contain;
+  background: url(${introBgImage}) ${({ theme: { colors } }) => colors.white}
+    no-repeat center center / contain;
   overflow: hidden;
 
   ${SuperQuery().minResolution.of('192dpi').css`
@@ -33,7 +34,7 @@ export const IntroLead = styled.span`
   font-style: normal;
   font-size: 27px;
   line-height: 1;
-  color: #242424;
+  color: ${({ theme: { colors } }) => colors.black};
   text-transform: uppercase;
   letter-spacing: 2px;
 `;
@@ -50,7 +51,7 @@ export const IntroTitle = styled.h1`
   font-style: normal;
   font-size: 109px;
   line-height: 117px;
-  color: #242424;
+  color: ${({ theme: { colors } }) => colors.black};
   text-transform: uppercase;
   letter-spacing: 6px;
 
@@ -119,10 +120,11 @@ export const IntroLink = styled(Link)`
   font-family: 'DINPro', Arial, sans-serif;
   font-size: 27px;
   line-height: 1;
-  color: #171717;
+  color: ${({ theme: { colors } }) => colors.black};
   text-decoration: none;
   letter-spacing: 1px;
-  background: url(${introLinkImage}) #ff6a9f no-repeat 14px center;
+  background: url(${introLinkImage})
+    ${({ theme: { colors } }) => colors.primary} no-repeat 14px center;
   transition: all 0.3s ease-in-out;
 
   ${SuperQuery().minResolution.of('192dpi').css`
@@ -148,27 +150,25 @@ export const IntroLink = styled(Link)`
     display: flex;
     width: 50px;
     height: 50px;
-    background-color: #272727;
+    background-color: ${({ theme: { colors } }) => colors.black};
     border-radius: 50%;
     transition: all 0.3s ease-in-out;
   }
 
   &:hover {
-    background-color: #3fc2fd;
-    color: #ffffff;
+    background-color: ${({ theme: { colors } }) => colors.secondary};
+    color: ${({ theme: { colors } }) => colors.white};
 
     svg {
+      transition: all 0.3s ease-in-out;
       > path {
-        stroke: #171717;
+        transition: inherit;
+        stroke: ${({ theme: { colors } }) => colors.black};
       }
     }
 
     &::after {
-      background-color: #ffffff;
+      background-color: ${({ theme: { colors } }) => colors.white};
     }
-  }
-
-  &:active {
-    background-color: #118bbb;
   }
 `;
