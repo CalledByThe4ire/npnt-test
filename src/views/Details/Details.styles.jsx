@@ -25,39 +25,43 @@ export const Details = styled.section`
   `}
 `;
 
-export const DetailsElements = styled.ul`
+export const DetailsElementsList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
 `;
 
-export const DetailsElement = styled.img`
+export const DetailsElementsListItem = styled.li`
+  display: flex;
+`;
+
+export const DetailsElementsListItemImage = styled.img`
   position: absolute;
   display: flex;
   mix-blend-mode: multiply;
 `;
 
-export const DetailsElementSperm1 = styled(DetailsElement)`
+export const DetailsElementsListItemImageSperm1 = styled(DetailsElementsListItemImage)`
   top: 98px;
   left: 366px;
 `;
 
-export const DetailsElementSperm2 = styled(DetailsElement)`
+export const DetailsElementsListItemImageSperm2 = styled(DetailsElementsListItemImage)`
   top: 95px;
   left: 585px;
 `;
 
-export const DetailsElementSperm3 = styled(DetailsElement)`
+export const DetailsElementsListItemImageSperm3 = styled(DetailsElementsListItemImage)`
   top: 75px;
   left: 710px;
 `;
 
-export const DetailsElementSperm4 = styled(DetailsElement)`
+export const DetailsElementsListItemImageSperm4 = styled(DetailsElementsListItemImage)`
   bottom: 15px;
   right: -595px;
 `;
 
-export const DetailsElementSperm5 = styled(DetailsElement)`
+export const DetailsElementsListItemImageSperm5 = styled(DetailsElementsListItemImage)`
   bottom: 95px;
   right: -190px;
 `;

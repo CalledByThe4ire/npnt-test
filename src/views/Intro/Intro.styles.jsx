@@ -1,10 +1,8 @@
 import styled from 'styled-components/macro';
 import SuperQuery from '@themgoncalves/super-query';
-import { Link } from 'react-router-dom';
+import { Button } from '../../styles';
 import introBgImage from '../../assets/images/intro/intro__bg.jpg';
 import introBgImageRetina from '../../assets/images/intro/intro__bg@2x.jpg';
-import introLinkImage from '../../assets/images/intro/intro__link--effect.png';
-import introLinkImageRetina from '../../assets/images/intro/intro__link--effect@2x.png';
 
 export const Intro = styled.section`
   position: relative;
@@ -67,108 +65,62 @@ export const IntroTitle = styled.h1`
   }
 `;
 
-export const IntroElements = styled.ul`
+export const IntroButton = styled(Button)`
+  z-index: 10;
+  position: absolute;
+  top: 465px;
+  right: 110px;
+  width: 290px;
+`;
+
+export const IntroElementsList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
 `;
 
-export const IntroElement = styled.img`
+export const IntroElementsListItem = styled.li`
+  display: flex;
+`;
+
+export const IntroElementsListItemImage = styled.img`
   z-index: 15;
   position: absolute;
   display: flex;
 `;
 
-export const IntroElementCell1 = styled(IntroElement)`
+export const IntroElementsListItemImageCell1 = styled(
+  IntroElementsListItemImage
+)`
   top: 65px;
   right: 215px;
 `;
 
-export const IntroElementCell2 = styled(IntroElement)`
+export const IntroElementsListItemImageCell2 = styled(
+  IntroElementsListItemImage
+)`
   top: 200px;
   right: 50px;
 `;
 
-export const IntroElementCell3 = styled(IntroElement)`
+export const IntroElementsListItemImageCell3 = styled(
+  IntroElementsListItemImage
+)`
   bottom: -100px;
   right: 255px;
 `;
 
-export const IntroElementCell4 = styled(IntroElement)`
+export const IntroElementsListItemImageCell4 = styled(
+  IntroElementsListItemImage
+)`
   z-index: 0;
   left: 20px;
   bottom: 190px;
 `;
 
-export const IntroElementSperm = styled(IntroElement)`
+export const IntroElementsListItemImageSperm = styled(
+  IntroElementsListItemImage
+)`
   top: 155px;
   right: 0;
-`;
-
-export const IntroLink = styled(Link)`
-  z-index: 10;
-  position: absolute;
-  top: 465px;
-  right: 110px;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  width: 290px;
-  height: 80px;
-  padding-left: 90px;
-  border-radius: 80px / 80px;
-  font-family: 'DINPro', Arial, sans-serif;
-  font-size: 27px;
-  line-height: 1;
-  color: ${({ theme: { colors } }) => colors.black};
-  text-decoration: none;
-  letter-spacing: 1px;
-  background: url(${introLinkImage})
-    ${({ theme: { colors } }) => colors.primary} no-repeat 14px center;
-  transition: all 0.3s ease-in-out;
-
-  ${SuperQuery().minResolution.of('192dpi').css`
-    background-image: url(${introLinkImageRetina});
-  `}
-
-  svg {
-    z-index: 1;
-    position: absolute;
-    left: 35px;
-    transition: all 0.3s ease-in-out;
-
-    & > path {
-      transition: inherit;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    display: flex;
-    width: 50px;
-    height: 50px;
-    background-color: ${({ theme: { colors } }) => colors.black};
-    border-radius: 50%;
-    transition: all 0.3s ease-in-out;
-  }
-
-  &:hover {
-    background-color: ${({ theme: { colors } }) => colors.secondary};
-    color: ${({ theme: { colors } }) => colors.white};
-
-    svg {
-      transition: all 0.3s ease-in-out;
-      > path {
-        transition: inherit;
-        stroke: ${({ theme: { colors } }) => colors.black};
-      }
-    }
-
-    &::after {
-      background-color: ${({ theme: { colors } }) => colors.white};
-    }
-  }
 `;

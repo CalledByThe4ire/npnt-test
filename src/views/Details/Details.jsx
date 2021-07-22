@@ -10,12 +10,13 @@ import {
   DetailsPanel,
   DetailsPanelContent,
   DetailsPanelText,
-  DetailsElements,
-  DetailsElementSperm1,
-  DetailsElementSperm2,
-  DetailsElementSperm3,
-  DetailsElementSperm4,
-  DetailsElementSperm5,
+  DetailsElementsList,
+  DetailsElementsListItem,
+  DetailsElementsListItemImageSperm1,
+  DetailsElementsListItemImageSperm2,
+  DetailsElementsListItemImageSperm3,
+  DetailsElementsListItemImageSperm4,
+  DetailsElementsListItemImageSperm5,
 } from './Details.styles.jsx';
 import sperm1Image from '../../assets/images/details/details__element--sperm1.png';
 import sperm1ImageRetina from '../../assets/images/details/details__element--sperm1@2x.png';
@@ -45,65 +46,73 @@ export default () => {
   }, [hasScroll, setHasScroll]);
   return (
     <Details className="details">
-      <DetailsElements className="details__elements">
-        <DetailsElementSperm1
-          className="details__element details__element--sperm1"
-          srcSet={`${sperm1Image} 1x, ${sperm1ImageRetina} 2x`}
-          alt="cell"
-          width="1141"
-          height="532"
-        ></DetailsElementSperm1>
-        <DetailsElementSperm2
-          className="details__element details__element--sperm2"
-          srcSet={`${sperm2Image} 1x, ${sperm2ImageRetina} 2x`}
-          alt="cell"
-          width="731"
-          height="342"
-        ></DetailsElementSperm2>
-        <DetailsElementSperm3
-          className="details__element details__element--sperm3"
-          srcSet={`${sperm3Image} 1x, ${sperm3ImageRetina} 2x`}
-          alt="cell"
-          width="414"
-          height="196"
-        ></DetailsElementSperm3>
-        <DetailsElementSperm4
-          className="details__element details__element--sperm4"
-          srcSet={`${sperm4Image} 1x, ${sperm4ImageRetina} 2x`}
-          alt="cell"
-          width="731"
-          height="342"
-        ></DetailsElementSperm4>
-        <DetailsElementSperm5
-          className="details__element details__element--sperm5"
-          srcSet={`${sperm5Image} 1x, ${sperm5ImageRetina} 2x`}
-          alt="cell"
-          width="327"
-          height="158"
-        ></DetailsElementSperm5>
-      </DetailsElements>
+      <DetailsElementsList className="details__elements-list details-elements-list">
+        <DetailsElementsListItem className="details-elements-list__item">
+          <DetailsElementsListItemImageSperm1
+            className="details-elements-list-item__image details-elements-list-item__image--sperm1"
+            srcSet={`${sperm1Image} 1x, ${sperm1ImageRetina} 2x`}
+            alt="cell"
+            width="1141"
+            height="532"
+          ></DetailsElementsListItemImageSperm1>
+        </DetailsElementsListItem>
+        <DetailsElementsListItem className="details-elements-list__item">
+          <DetailsElementsListItemImageSperm2
+            className="details-elements-list-item__image details-elements-list-item__image--sperm2"
+            srcSet={`${sperm2Image} 1x, ${sperm2ImageRetina} 2x`}
+            alt="cell"
+            width="731"
+            height="342"
+          ></DetailsElementsListItemImageSperm2>
+        </DetailsElementsListItem>
+        <DetailsElementsListItem className="details-elements-list__item">
+          <DetailsElementsListItemImageSperm3
+            className="details-elements-list-item__image details-elements-list-item__image--sperm3"
+            srcSet={`${sperm3Image} 1x, ${sperm3ImageRetina} 2x`}
+            alt="cell"
+            width="414"
+            height="196"
+          ></DetailsElementsListItemImageSperm3>
+        </DetailsElementsListItem>
+        <DetailsElementsListItem className="details-elements-list__item">
+          <DetailsElementsListItemImageSperm4
+            className="details-elements-list-item__image details-elements-list-item__image--sperm4"
+            srcSet={`${sperm4Image} 1x, ${sperm4ImageRetina} 2x`}
+            alt="cell"
+            width="731"
+            height="342"
+          ></DetailsElementsListItemImageSperm4>
+        </DetailsElementsListItem>
+        <DetailsElementsListItem className="details-elements-list__item">
+          <DetailsElementsListItemImageSperm5
+            className="details-elements-list-item__image details-elements-list-item__image--sperm5"
+            srcSet={`${sperm5Image} 1x, ${sperm5ImageRetina} 2x`}
+            alt="cell"
+            width="327"
+            height="158"
+          ></DetailsElementsListItemImageSperm5>
+        </DetailsElementsListItem>
+      </DetailsElementsList>
       <DetailsTitle>
         текст
         <br />
         сообщения
       </DetailsTitle>
       <DetailsPanel className="panel" hasScroll={hasScroll}>
-          <CustomScroll allowOuterScroll={true} rtl={true}>
-            <DetailsPanelContent
-              className="panel__content"
-              ref={panelContentRef}
-            >
-              <DetailsPanelText
-                className="panel__text"
-                ref={panelTextRef}
-                hasScroll={hasScroll}
-                dangerouslySetInnerHTML={{
-                  __html: t('slider.details.text', { returnObjects: true }).join('')
-                }}
-              >
-              </DetailsPanelText>
-            </DetailsPanelContent>
-          </CustomScroll>
+        <CustomScroll allowOuterScroll={true} rtl={true}>
+          <DetailsPanelContent className="panel__content" ref={panelContentRef}>
+            <DetailsPanelText
+              className="panel__text"
+              ref={panelTextRef}
+              hasScroll={hasScroll}
+              dangerouslySetInnerHTML={{
+                __html: t('slider.details.text', { returnObjects: true })
+                  .map((v) => `<p>${v}</p>`)
+                  .join(''),
+              }}
+            ></DetailsPanelText>
+          </DetailsPanelContent>
+        </CustomScroll>
       </DetailsPanel>
     </Details>
   );
