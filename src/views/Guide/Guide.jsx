@@ -1,10 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { next } from '../../store/slider/slider.slice';
+import { toggle, modalSelector } from '../../store/modal/modal.slice';
+import GuideModal from '../../components/GuideModal/GuideModal.jsx';
 import Icon from '../../components/Icon/Icon.jsx';
 import {
   Guide,
@@ -46,7 +47,56 @@ import bubble8ImageRetina from '../../assets/images/guide/guide__element--bubble
 export default () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const handleClick = () => dispatch(next());
+  const { isOpen } = useSelector(modalSelector);
+  const handleClick = () => dispatch(toggle());
+
+  const renderContent = () => {
+    if (isOpen) {
+      return <GuideModal></GuideModal>;
+    } else {
+      return (
+        <>
+          <GuideLead className="guide__lead">
+            {t('slider.guide.lead')}
+          </GuideLead>
+          <GuideTitle
+            className="guide__title"
+            dangerouslySetInnerHTML={{ __html: t('slider.guide.title') }}
+          ></GuideTitle>
+          <GuidePanel className="guide__panel guide-panel">
+            <GuidePanelItemLeft className="guide-panel__item guide-panel__item--left guide-panel-item">
+              <GuidePanelItemContent className="guide-panel-item__content">
+                <Icon name="use" width={68} height={63} />
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: `${t('slider.guide.use')}`,
+                  }}
+                ></p>
+              </GuidePanelItemContent>
+            </GuidePanelItemLeft>
+            <GuidePanelItemRight className="guide-panel__item guide-panel__item--right guide-panel-item">
+              <GuidePanelItemContent className="guide-panel-item__content">
+                <Icon name="duration" width={70} height={58} />
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: `${t('slider.guide.duration')}`,
+                  }}
+                ></p>
+                <GuideButton
+                  to="/"
+                  onClick={handleClick}
+                  className="guide__button button"
+                >
+                  <Icon name="plus" width={15} height={15} />
+                  <span>{t('slider.guide.buttonCaption')}</span>
+                </GuideButton>
+              </GuidePanelItemContent>
+            </GuidePanelItemRight>
+          </GuidePanel>
+        </>
+      );
+    }
+  };
 
   return (
     <Guide className="guide">
@@ -110,37 +160,7 @@ export default () => {
           height="75"
         ></GuideElementsListItemImageBubble8>
       </GuideElementsList>
-      <GuideLead className="guide__lead">{t('slider.guide.lead')}</GuideLead>
-      <GuideTitle
-        className="guide__title"
-        dangerouslySetInnerHTML={{ __html: t('slider.guide.title') }}
-      ></GuideTitle>
-      <GuidePanel className="guide__panel guide-panel">
-        <GuidePanelItemLeft className="guide-panel__item guide-panel__item--left guide-panel-item">
-          <GuidePanelItemContent className="guide-panel-item__content">
-            <Icon name="use" width={68} height={63} />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: `${t('slider.guide.use')}`,
-              }}
-            ></p>
-          </GuidePanelItemContent>
-        </GuidePanelItemLeft>
-        <GuidePanelItemRight className="guide-panel__item guide-panel__item--right guide-panel-item">
-          <GuidePanelItemContent className="guide-panel-item__content">
-            <Icon name="duration" width={70} height={58} />
-            <p
-              dangerouslySetInnerHTML={{
-                __html: `${t('slider.guide.duration')}`,
-              }}
-            ></p>
-            <GuideButton to="/" onClick={handleClick} className="guide__button button">
-              <Icon name="plus" width={15} height={15} />
-              <span>{t('slider.guide.buttonCaption')}</span>
-            </GuideButton>
-          </GuidePanelItemContent>
-        </GuidePanelItemRight>
-      </GuidePanel>
+      {renderContent()}
     </Guide>
   );
 };

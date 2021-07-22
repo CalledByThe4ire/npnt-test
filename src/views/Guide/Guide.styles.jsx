@@ -48,7 +48,7 @@ export const GuideLead = styled.span`
   display: flex;
   flex-flow: row wrap;
   margin-bottom: 20px;
-  padding-left: 120px;
+  padding-left: 125px;
   font-family: 'DINPro', Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -59,17 +59,11 @@ export const GuideLead = styled.span`
   letter-spacing: 2px;
 `;
 
-export const GuideButton = styled(Button)`
-  margin-top: auto;
-`;
-
 export const GuideTitle = styled.h2`
-  z-index: 10;
   position: relative;
   display: flex;
   flex-flow: row wrap;
   margin: 0;
-  margin-bottom: 75px;
   padding: 0;
   padding-left: 120px;
   font-family: 'Gilroy', Arial, sans-serif;
@@ -93,11 +87,18 @@ export const GuideTitle = styled.h2`
   }
 `;
 
+export const GuideButton = styled(Button)`
+  margin-top: auto;
+`;
+
 export const GuidePanel = styled.ul`
+  z-index: 666;
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   margin: 0;
   padding: 0;
+  margin-top: 75px;
   list-style: none;
 `;
 
