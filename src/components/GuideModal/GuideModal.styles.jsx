@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { darken, rgba } from 'polished';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const GuideModal = styled.div`
   z-index: 666;
@@ -166,3 +167,7 @@ export const GuideModalAdvantagesListItem = styled.li`
     color: ${({ theme: { colors } }) => colors.secondary};
   }
 `;
+
+GuideModalAdvantagesListItem.propTypes = {
+  marker: PropTypes.string,
+};

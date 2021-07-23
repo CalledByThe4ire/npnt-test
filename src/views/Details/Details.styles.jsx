@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
 import { darken, lighten } from 'polished';
 import SuperQuery from '@themgoncalves/super-query';
 import detailsBgImage from '../../assets/images/details/details__bg.png';
@@ -41,27 +42,37 @@ export const DetailsElementsListItemImage = styled.img`
   mix-blend-mode: multiply;
 `;
 
-export const DetailsElementsListItemImageSperm1 = styled(DetailsElementsListItemImage)`
+export const DetailsElementsListItemImageSperm1 = styled(
+  DetailsElementsListItemImage
+)`
   top: 98px;
   left: 366px;
 `;
 
-export const DetailsElementsListItemImageSperm2 = styled(DetailsElementsListItemImage)`
+export const DetailsElementsListItemImageSperm2 = styled(
+  DetailsElementsListItemImage
+)`
   top: 95px;
   left: 585px;
 `;
 
-export const DetailsElementsListItemImageSperm3 = styled(DetailsElementsListItemImage)`
+export const DetailsElementsListItemImageSperm3 = styled(
+  DetailsElementsListItemImage
+)`
   top: 75px;
   left: 710px;
 `;
 
-export const DetailsElementsListItemImageSperm4 = styled(DetailsElementsListItemImage)`
+export const DetailsElementsListItemImageSperm4 = styled(
+  DetailsElementsListItemImage
+)`
   bottom: 15px;
   right: -595px;
 `;
 
-export const DetailsElementsListItemImageSperm5 = styled(DetailsElementsListItemImage)`
+export const DetailsElementsListItemImageSperm5 = styled(
+  DetailsElementsListItemImage
+)`
   bottom: 95px;
   right: -190px;
 `;
@@ -188,3 +199,11 @@ export const DetailsPanelText = styled.div`
     font-weight: 700;
   }
 `;
+
+DetailsPanel.propTypes = {
+  hasScroll: PropTypes.bool,
+};
+
+DetailsPanelText.propTypes = {
+  hasScroll: PropTypes.bool,
+};

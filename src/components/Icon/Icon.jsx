@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Home from './Home.jsx';
 import Logo from './Logo.jsx';
 import Project from './Project.jsx';
@@ -10,28 +11,40 @@ import Use from './Use.jsx';
 import Duration from './Duration.jsx';
 
 const Icon = (props) => {
-  switch (props.name) {
+  const { name, ...rest } = props;
+
+  switch (name) {
     case 'logo':
-      return <Logo {...props} />;
+      return <Logo {...rest} />;
     case 'home':
-      return <Home {...props} />;
+      return <Home {...rest} />;
     case 'project':
-      return <Project {...props} />;
+      return <Project {...rest} />;
     case 'arrow':
-      return <Arrow {...props} />;
+      return <Arrow {...rest} />;
     case 'cross':
-      return <Cross {...props} />;
+      return <Cross {...rest} />;
     case 'plus':
-      return <Plus {...props} />;
+      return <Plus {...rest} />;
     case 'angle-bracket':
-      return <AngleBracket {...props} />;
+      return <AngleBracket {...rest} />;
     case 'use':
-      return <Use {...props} />;
+      return <Use {...rest} />;
     case 'duration':
-      return <Duration {...props} />;
+      return <Duration {...rest} />;
     default:
       return;
   }
+};
+
+Icon.propTypes = {
+  name: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  fill: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  viewBox: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Icon;

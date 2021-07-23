@@ -178,7 +178,7 @@ export default () => {
                     <GuideModalAdvantagesListItem
                       key={uuidv4()}
                       className="guide-advantages-list__item"
-                      index={
+                      marker={
                         i === 0
                           ? formatNumber(index + 1)
                           : formatNumber(ITEMS_PER_PAGE + (index + 1))

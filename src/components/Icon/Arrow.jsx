@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SVG = ({
   style = {},
@@ -27,5 +28,14 @@ const SVG = ({
     />
   </svg>
 );
+
+SVG.propTypes = {
+  style: PropTypes.object,
+  fill: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  viewBox: PropTypes.string,
+  className: PropTypes.string,
+};
 
 export default SVG;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Intro from './Intro/Intro.jsx';
 import Details from './Details/Details.jsx';
 import Guide from './Guide/Guide.jsx';
@@ -14,6 +15,10 @@ const View = (props) => {
     default:
       return;
   }
+};
+
+View.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
 export default View;
