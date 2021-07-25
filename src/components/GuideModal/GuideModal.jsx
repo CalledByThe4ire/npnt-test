@@ -6,7 +6,6 @@ import SwipeableViews from 'react-swipeable-views';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
 
 import { ITEMS_PER_PAGE } from '../../utils/constants/guide.modal.constants';
 import { formatNumber } from '../../utils/helpers/number.helpers';
@@ -16,7 +15,6 @@ import {
   prev,
   next,
   goto,
-  getItemsCount,
   modalSelector,
 } from '../../store/modal/modal.slice';
 import {
@@ -73,10 +71,6 @@ export default () => {
   );
 
   useEffect(() => {
-    dispatch(getItemsCount(advantages.length));
-  }, [dispatch, advantages.length]);
-
-  useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) {
         handleCloseClick();
@@ -108,7 +102,11 @@ export default () => {
             <Icon name="cross" width={34} height={34} />
           </GuideModalClose>
 
-          <GuideModalAdvantagesList className="guide__advantages-list guide-advantages-list">
+          <GuideModalAdvantagesList
+            className="
+              guide__advantages-list
+              guide-advantages-list
+            ">
             <GuideModalAdvantagesListItem
               className="guide-advantages-list__item"
               dangerouslySetInnerHTML={{
@@ -136,7 +134,11 @@ export default () => {
             <Icon name="cross" width={34} height={34} />
           </GuideModalClose>
 
-          <GuideModalAdvantagesList className="guide__advantages-list guide-advantages-list">
+          <GuideModalAdvantagesList
+            className="
+              guide__advantages-list
+              guide-advantages-list
+            ">
             {_.flatten(advantages).map((value, index) => (
               <GuideModalAdvantagesListItem
                 key={uuidv4()}
@@ -173,7 +175,11 @@ export default () => {
           >
             {advantages.map((chunk, i) => (
               <GuideModalSlide key={uuidv4()}>
-                <GuideModalAdvantagesList className="guide__advantages-list guide-advantages-list">
+                <GuideModalAdvantagesList
+                  className="
+                    guide__advantages-list
+                    guide-advantages-list
+                  ">
                   {chunk.map((value, index) => (
                     <GuideModalAdvantagesListItem
                       key={uuidv4()}
@@ -191,13 +197,26 @@ export default () => {
             ))}
           </SwipeableViews>
           <GuideModalControlsList className="guide-modal__controls-list">
-            <GuideModalControlsListItemPrev className="guide-modal-controls-list__item guide-modal-controls-list__item--prev">
-              <Link to="/#" onClick={handlePrevClick}>
-                <Icon name="angle-bracket" width={9} height={15} />
-              </Link>
+            <GuideModalControlsListItemPrev
+              className="
+                guide-modal-controls-list__item
+                guide-modal-controls-list__item--button
+                guide-modal-controls-list__item--prev"
+              onClick={handlePrevClick}
+              isDisabled={currentIndex === 0}
+            >
+              <Icon name="angle-bracket" width={9} height={15} />
             </GuideModalControlsListItemPrev>
-            <GuideModalControlsListItemPagination className="guide-modal-controls-list__item guide-modal-controls-list__item--pagination">
-              <GuideModalPagination className="guide-modal__pagination guide-modal-pagination">
+            <GuideModalControlsListItemPagination
+              className="
+              guide-modal-controls-list__item
+              guide-modal-controls-list__item--pagination"
+            >
+              <GuideModalPagination
+                className="
+                  guide-modal__pagination
+                  guide-modal-pagination
+                ">
                 {advantages.map((chunk, index) => (
                   <GuideModalPaginationItem
                     key={uuidv4()}
@@ -206,13 +225,19 @@ export default () => {
                     {index === currentIndex ? (
                       <GuideModalPaginationDotActive
                         to="/#"
-                        className="guide-modal-pagination__dot guide-modal-pagination__dot--active"
+                        className="
+                          guide-modal-pagination__dot
+                          guide-modal-pagination__dot--active
+                        "
                         onClick={() => handleChangeIndex(index)}
                       ></GuideModalPaginationDotActive>
                     ) : (
                       <GuideModalPaginationDot
                         to="/#"
-                        className="guide-modal-pagination__item guide-modal-pagination__dot"
+                        className="
+                          guide-modal-pagination__item
+                          guide-modal-pagination__dot
+                        "
                         onClick={() => handleChangeIndex(index)}
                       ></GuideModalPaginationDot>
                     )}
@@ -220,10 +245,15 @@ export default () => {
                 ))}
               </GuideModalPagination>
             </GuideModalControlsListItemPagination>
-            <GuideModalControlsListItemNext className="guide-modal-controls-list__item guide-modal-controls-list__item--next">
-              <Link to="/#" onClick={handleNextClick}>
-                <Icon name="angle-bracket" width={9} height={15} />
-              </Link>
+            <GuideModalControlsListItemNext
+              className="
+              guide-modal-controls-list__item
+              guide-modal-controls-list__item--button
+              guide-modal-controls-list__item--next"
+              onClick={handleNextClick}
+              isDisabled={currentIndex === advantages.length - 1}
+            >
+              <Icon name="angle-bracket" width={9} height={15} />
             </GuideModalControlsListItemNext>
           </GuideModalControlsList>
         </GuideModalSlider>

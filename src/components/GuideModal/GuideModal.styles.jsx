@@ -76,10 +76,20 @@ export const GuideModalControlsListItem = styled.li`
   }
 `;
 
-export const GuideModalControlsListItemPrev = styled(
-  GuideModalControlsListItem
-)`
+export const GuideModalControlsListItemButton = styled.button`
   display: flex;
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  pointer-events: ${({ isDisabled }) => (isDisabled ? 'none' : 'auto')};
+`;
+
+export const GuideModalControlsListItemPrev = styled(
+  GuideModalControlsListItemButton
+)`
   transform: rotate(-180deg);
 `;
 
@@ -91,9 +101,9 @@ export const GuideModalControlsListItemPagination = styled(
 `;
 
 export const GuideModalControlsListItemNext = styled(
-  GuideModalControlsListItem
+  GuideModalControlsListItemButton
 )`
-  display: flex;
+  transform: rotate(0deg);
 `;
 
 export const GuideModalPagination = styled.ul`
@@ -170,4 +180,8 @@ export const GuideModalAdvantagesListItem = styled.li`
 
 GuideModalAdvantagesListItem.propTypes = {
   marker: PropTypes.string,
+};
+
+GuideModalControlsListItemButton.propTypes = {
+  isDisabled: PropTypes.bool.isRequired,
 };

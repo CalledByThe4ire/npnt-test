@@ -4,7 +4,6 @@ export const initialState = {
   isOpen: true,
   slider: {
     currentIndex: 0,
-    itemsCount: 0,
   },
 };
 
@@ -15,26 +14,11 @@ const sliderSlice = createSlice({
     toggle: (state) => {
       state.isOpen = !state.isOpen;
     },
-    getItemsCount: (state, { payload }) => {
-      state.slider.itemsCount = payload;
-    },
     prev: (state) => {
-      const newIndex = state.slider.currentIndex - 1;
-
-      if (newIndex >= 0) {
-        state.slider.currentIndex = newIndex;
-      }
+      state.slider.currentIndex = state.slider.currentIndex - 1;
     },
     next: (state) => {
-      const {
-        slider: { itemsCount },
-      } = state;
-
-      const newIndex = state.slider.currentIndex + 1;
-
-      if (newIndex < itemsCount) {
-        state.slider.currentIndex = newIndex;
-      }
+      state.slider.currentIndex = state.slider.currentIndex + 1;
     },
     goto: (state, { payload }) => {
       state.slider.currentIndex = payload;
@@ -42,6 +26,6 @@ const sliderSlice = createSlice({
   },
 });
 
-export const { toggle, getItemsCount, prev, next, goto } = sliderSlice.actions;
+export const { toggle, prev, next, goto } = sliderSlice.actions;
 export const modalSelector = (state) => state.modal;
 export default sliderSlice.reducer;
