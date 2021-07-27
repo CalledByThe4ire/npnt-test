@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
-  isOpen: true,
+  isOpen: false,
   slider: {
     currentIndex: 0,
   },

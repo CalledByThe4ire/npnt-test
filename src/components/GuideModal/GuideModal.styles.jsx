@@ -85,6 +85,7 @@ export const GuideModalControlsListItemButton = styled.button`
   color: inherit;
   background: none;
   pointer-events: ${({ isDisabled }) => (isDisabled ? 'none' : 'auto')};
+  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 `;
 
 export const GuideModalControlsListItemPrev = styled(

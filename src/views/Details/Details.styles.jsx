@@ -2,6 +2,9 @@ import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import { darken, lighten } from 'polished';
 import SuperQuery from '@themgoncalves/super-query';
+import { useSpring, animated, config } from 'react-spring';
+
+import { ANIMATION } from '../../utils/constants/view.details.constants';
 import detailsBgImage from '../../assets/images/details/details__bg.png';
 import detailsBgImageRetina from '../../assets/images/details/details__bg@2x.png';
 
@@ -36,46 +39,116 @@ export const DetailsElementsListItem = styled.li`
   display: flex;
 `;
 
-export const DetailsElementsListItemImage = styled.img`
+export const DetailsElementsListItemImage = styled(animated.img)`
   position: absolute;
   display: flex;
   mix-blend-mode: multiply;
 `;
 
-export const DetailsElementsListItemImageSperm1 = styled(
-  DetailsElementsListItemImage
-)`
+const StyledSperm1 = styled(DetailsElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 98px;
   left: 366px;
 `;
 
-export const DetailsElementsListItemImageSperm2 = styled(
-  DetailsElementsListItemImage
-)`
+export const DetailsElementsListItemImageSperm1 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledSperm1
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledSperm2 = styled(DetailsElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 95px;
   left: 585px;
 `;
 
-export const DetailsElementsListItemImageSperm3 = styled(
-  DetailsElementsListItemImage
-)`
+export const DetailsElementsListItemImageSperm2 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledSperm2
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledSperm3 = styled(DetailsElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 75px;
   left: 710px;
 `;
 
-export const DetailsElementsListItemImageSperm4 = styled(
-  DetailsElementsListItemImage
-)`
+export const DetailsElementsListItemImageSperm3 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledSperm3
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledSperm4 = styled(DetailsElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   bottom: 15px;
   right: -595px;
 `;
 
-export const DetailsElementsListItemImageSperm5 = styled(
-  DetailsElementsListItemImage
-)`
+export const DetailsElementsListItemImageSperm4 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledSperm4
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledSperm5 = styled(DetailsElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   bottom: 95px;
   right: -190px;
 `;
+
+export const DetailsElementsListItemImageSperm5 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledSperm5
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
 
 export const DetailsTitle = styled.h2`
   display: flex;

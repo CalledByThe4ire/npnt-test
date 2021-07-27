@@ -4,6 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import { sliderSelector } from '../../store/slider/slider.slice';
 import { toggle, modalSelector } from '../../store/modal/modal.slice';
 import GuideModal from '../../components/GuideModal/GuideModal.jsx';
 import Icon from '../../components/Icon/Icon.jsx';
@@ -44,10 +45,17 @@ import bubble7ImageRetina from '../../assets/images/guide/guide__element--bubble
 import bubble8Image from '../../assets/images/guide/guide__element--bubble8.png';
 import bubble8ImageRetina from '../../assets/images/guide/guide__element--bubble8@2x.png';
 
-export default () => {
+export default (props) => {
   const { t } = useTranslation();
+
   const dispatch = useDispatch();
+
   const { isOpen } = useSelector(modalSelector);
+
+  const { currentIndex } = useSelector(sliderSelector);
+
+  const { index } = props;
+
   const handleClick = () => dispatch(toggle());
 
   const renderContent = () => {
@@ -62,7 +70,7 @@ export default () => {
           <GuideTitle
             className="guide__title"
             dangerouslySetInnerHTML={{ __html: t('slider.guide.title') }}
-          ></GuideTitle>
+          />
           <GuidePanel className="guide__panel guide-panel">
             <GuidePanelItemLeft className="guide-panel__item guide-panel__item--left guide-panel-item">
               <GuidePanelItemContent className="guide-panel-item__content">
@@ -71,7 +79,7 @@ export default () => {
                   dangerouslySetInnerHTML={{
                     __html: `${t('slider.guide.use')}`,
                   }}
-                ></p>
+                />
               </GuidePanelItemContent>
             </GuidePanelItemLeft>
             <GuidePanelItemRight className="guide-panel__item guide-panel__item--right guide-panel-item">
@@ -81,7 +89,7 @@ export default () => {
                   dangerouslySetInnerHTML={{
                     __html: `${t('slider.guide.duration')}`,
                   }}
-                ></p>
+                />
                 <GuideButton
                   to="/"
                   onClick={handleClick}
@@ -103,62 +111,78 @@ export default () => {
       <GuideElementsList className="guide__elements-list guide-elements-list">
         <GuideElementsListItem className="guide-elements-list__item guide-elements-list-item">
           <GuideElementsListItemImageBubble1
-            className="guide-elements-list-item__image guide-elements-list-item__image--bubble1"
+            className="guide-elements-list-item__image"
             srcSet={`${bubble1Image} 1x, ${bubble1ImageRetina} 2x`}
             alt="bubble"
             width="34"
             height="34"
-          ></GuideElementsListItemImageBubble1>
+            modifier="bubble1"
+            isViewActive={index !== currentIndex}
+          />
         </GuideElementsListItem>
         <GuideElementsListItemImageBubble2
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble2"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble2Image} 1x, ${bubble2ImageRetina} 2x`}
           alt="bubble"
           width="113"
           height="112"
-        ></GuideElementsListItemImageBubble2>
+          modifier="bubble2"
+          isViewActive={index !== currentIndex}
+        />
         <GuideElementsListItemImageBubble3
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble3"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble3Image} 1x, ${bubble3ImageRetina} 2x`}
           alt="bubble"
           width="37"
           height="38"
-        ></GuideElementsListItemImageBubble3>
+          modifier="bubble3"
+          isViewActive={index !== currentIndex}
+        />
         <GuideElementsListItemImageBubble4
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble4"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble4Image} 1x, ${bubble4ImageRetina} 2x`}
           alt="bubble"
           width="62"
           height="62"
-        ></GuideElementsListItemImageBubble4>
+          modifier="bubble4"
+          isViewActive={index !== currentIndex}
+        />
         <GuideElementsListItemImageBubble5
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble5"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble5Image} 1x, ${bubble5ImageRetina} 2x`}
           alt="bubble"
           width="68"
           height="69"
-        ></GuideElementsListItemImageBubble5>
+          modifier="bubble5"
+          isViewActive={index !== currentIndex}
+        />
         <GuideElementsListItemImageBubble6
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble6"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble6Image} 1x, ${bubble6ImageRetina} 2x`}
           alt="bubble"
           width="143"
           height="143"
-        ></GuideElementsListItemImageBubble6>
+          modifier="bubble6"
+          isViewActive={index !== currentIndex}
+        />
         <GuideElementsListItemImageBubble7
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble7"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble7Image} 1x, ${bubble7ImageRetina} 2x`}
           alt="bubble"
           width="33"
           height="33"
-        ></GuideElementsListItemImageBubble7>
+          modifier="bubble7"
+          isViewActive={index !== currentIndex}
+        />
         <GuideElementsListItemImageBubble8
-          className="guide-elements-list-item__image guide-elements-list-item__image--bubble8"
+          className="guide-elements-list-item__image"
           srcSet={`${bubble8Image} 1x, ${bubble8ImageRetina} 2x`}
           alt="bubble"
           width="75"
           height="75"
-        ></GuideElementsListItemImageBubble8>
+          modifier="bubble8"
+          isViewActive={index !== currentIndex}
+        />
       </GuideElementsList>
       {renderContent()}
     </Guide>

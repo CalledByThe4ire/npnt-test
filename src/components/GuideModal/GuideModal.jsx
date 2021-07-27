@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 
-import { ITEMS_PER_PAGE } from '../../utils/constants/guide.modal.constants';
+import { ITEMS_PER_PAGE } from '../../utils/constants/view.guide.constants';
 import { formatNumber } from '../../utils/helpers/number.helpers';
 import Icon from '../Icon/Icon.jsx';
 import {
@@ -93,7 +93,8 @@ export default () => {
           <GuideTitle
             className="guide-modal__title"
             dangerouslySetInnerHTML={{ __html: t('slider.guide.title') }}
-          ></GuideTitle>
+          />
+          /GuideTitle>
           <GuideModalClose
             to="/#"
             className="guide__close"
@@ -101,18 +102,18 @@ export default () => {
           >
             <Icon name="cross" width={34} height={34} />
           </GuideModalClose>
-
           <GuideModalAdvantagesList
             className="
               guide__advantages-list
               guide-advantages-list
-            ">
+            "
+          >
             <GuideModalAdvantagesListItem
               className="guide-advantages-list__item"
               dangerouslySetInnerHTML={{
                 __html: `<p>${t('slider.guide.advantages.message')}</p>`,
               }}
-            ></GuideModalAdvantagesListItem>
+            />
           </GuideModalAdvantagesList>
         </>
       );
@@ -125,7 +126,7 @@ export default () => {
           <GuideTitle
             className="guide-modal__title"
             dangerouslySetInnerHTML={{ __html: t('slider.guide.title') }}
-          ></GuideTitle>
+          />
           <GuideModalClose
             to="/#"
             className="guide__close"
@@ -138,14 +139,15 @@ export default () => {
             className="
               guide__advantages-list
               guide-advantages-list
-            ">
+            "
+          >
             {_.flatten(advantages).map((value, index) => (
               <GuideModalAdvantagesListItem
                 key={uuidv4()}
                 className="guide-advantages-list__item"
                 marker={formatNumber(index + 1)}
                 dangerouslySetInnerHTML={{ __html: `<p>${value}</p>` }}
-              ></GuideModalAdvantagesListItem>
+              />
             ))}
           </GuideModalAdvantagesList>
         </>
@@ -161,7 +163,7 @@ export default () => {
           <GuideTitle
             className="guide-modal__title"
             dangerouslySetInnerHTML={{ __html: t('slider.guide.title') }}
-          ></GuideTitle>
+          />
           <GuideModalClose
             to="/#"
             className="guide__close"
@@ -172,6 +174,7 @@ export default () => {
           <SwipeableViews
             index={currentIndex}
             onChangeIndex={handleChangeIndex}
+            enableMouseEvents={true}
           >
             {advantages.map((chunk, i) => (
               <GuideModalSlide key={uuidv4()}>
@@ -179,7 +182,8 @@ export default () => {
                   className="
                     guide__advantages-list
                     guide-advantages-list
-                  ">
+                  "
+                >
                   {chunk.map((value, index) => (
                     <GuideModalAdvantagesListItem
                       key={uuidv4()}
@@ -190,7 +194,7 @@ export default () => {
                           : formatNumber(ITEMS_PER_PAGE + (index + 1))
                       }
                       dangerouslySetInnerHTML={{ __html: `<p>${value}</p>` }}
-                    ></GuideModalAdvantagesListItem>
+                    />
                   ))}
                 </GuideModalAdvantagesList>
               </GuideModalSlide>
@@ -216,7 +220,8 @@ export default () => {
                 className="
                   guide-modal__pagination
                   guide-modal-pagination
-                ">
+                "
+              >
                 {advantages.map((chunk, index) => (
                   <GuideModalPaginationItem
                     key={uuidv4()}

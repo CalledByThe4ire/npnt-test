@@ -1,9 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import CustomScroll from 'react-custom-scroll';
 import 'react-custom-scroll/dist/customScroll.css';
+
+import { sliderSelector } from '../../store/slider/slider.slice';
 import {
   Details,
   DetailsTitle,
@@ -29,11 +32,18 @@ import sperm4ImageRetina from '../../assets/images/details/details__element--spe
 import sperm5Image from '../../assets/images/details/details__element--sperm5.png';
 import sperm5ImageRetina from '../../assets/images/details/details__element--sperm5@2x.png';
 
-export default () => {
+export default (props) => {
   const { t } = useTranslation();
+
   const panelContentRef = useRef(null);
+
   const panelTextRef = useRef(null);
+
   const [hasScroll, setHasScroll] = useState(false);
+
+  const { index } = props;
+
+  const { currentIndex } = useSelector(sliderSelector);
 
   useEffect(() => {
     if (panelContentRef.current && panelTextRef.current) {
@@ -49,48 +59,58 @@ export default () => {
       <DetailsElementsList className="details__elements-list details-elements-list">
         <DetailsElementsListItem className="details-elements-list__item">
           <DetailsElementsListItemImageSperm1
-            className="details-elements-list-item__image details-elements-list-item__image--sperm1"
+            className="details-elements-list-item__image"
             srcSet={`${sperm1Image} 1x, ${sperm1ImageRetina} 2x`}
             alt="cell"
             width="1141"
             height="532"
-          ></DetailsElementsListItemImageSperm1>
+            modifier="sperm1"
+            isViewActive={index !== currentIndex}
+          />
         </DetailsElementsListItem>
         <DetailsElementsListItem className="details-elements-list__item">
           <DetailsElementsListItemImageSperm2
-            className="details-elements-list-item__image details-elements-list-item__image--sperm2"
+            className="details-elements-list-item__image"
             srcSet={`${sperm2Image} 1x, ${sperm2ImageRetina} 2x`}
             alt="cell"
             width="731"
             height="342"
-          ></DetailsElementsListItemImageSperm2>
+            modifier="sperm2"
+            isViewActive={index !== currentIndex}
+          />
         </DetailsElementsListItem>
         <DetailsElementsListItem className="details-elements-list__item">
           <DetailsElementsListItemImageSperm3
-            className="details-elements-list-item__image details-elements-list-item__image--sperm3"
+            className="details-elements-list-item__image"
             srcSet={`${sperm3Image} 1x, ${sperm3ImageRetina} 2x`}
             alt="cell"
             width="414"
             height="196"
-          ></DetailsElementsListItemImageSperm3>
+            modifier="sperm3"
+            isViewActive={index !== currentIndex}
+          />
         </DetailsElementsListItem>
         <DetailsElementsListItem className="details-elements-list__item">
           <DetailsElementsListItemImageSperm4
-            className="details-elements-list-item__image details-elements-list-item__image--sperm4"
+            className="details-elements-list-item__image"
             srcSet={`${sperm4Image} 1x, ${sperm4ImageRetina} 2x`}
             alt="cell"
             width="731"
             height="342"
-          ></DetailsElementsListItemImageSperm4>
+            modifier="sperm4"
+            isViewActive={index !== currentIndex}
+          />
         </DetailsElementsListItem>
         <DetailsElementsListItem className="details-elements-list__item">
           <DetailsElementsListItemImageSperm5
-            className="details-elements-list-item__image details-elements-list-item__image--sperm5"
+            className="details-elements-list-item__image"
             srcSet={`${sperm5Image} 1x, ${sperm5ImageRetina} 2x`}
             alt="cell"
             width="327"
             height="158"
-          ></DetailsElementsListItemImageSperm5>
+            modifier="sperm5"
+            isViewActive={index !== currentIndex}
+          />
         </DetailsElementsListItem>
       </DetailsElementsList>
       <DetailsTitle>
@@ -110,7 +130,7 @@ export default () => {
                   .map((v) => `<p>${v}</p>`)
                   .join(''),
               }}
-            ></DetailsPanelText>
+            />
           </DetailsPanelContent>
         </CustomScroll>
       </DetailsPanel>

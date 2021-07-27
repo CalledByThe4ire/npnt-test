@@ -6,6 +6,7 @@ export const Slide = styled.li`
   flex-flow: column wrap;
   width: inherit;
   height: inherit;
+  cursor: grab;
 `;
 
 export const SlideHeader = styled.header`

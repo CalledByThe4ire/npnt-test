@@ -1,10 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { next } from '../../store/slider/slider.slice';
+import { next, sliderSelector } from '../../store/slider/slider.slice';
 import Icon from '../../components/Icon/Icon.jsx';
 import {
   Intro,
@@ -30,66 +30,85 @@ import cell4ImageRetina from '../../assets/images/intro/intro__element--cell4@2x
 import SpermImage from '../../assets/images/intro/intro__element--sperm.png';
 import SpermImageRetina from '../../assets/images/intro/intro__element--sperm@2x.png';
 
-export default () => {
+export default (props) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const handleClick = () => dispatch(next());
 
+  const dispatch = useDispatch();
+
+  const { index } = props;
+
+  const { currentIndex } = useSelector(sliderSelector);
+
+  const handleClick = () => dispatch(next());
   return (
     <Intro className="intro">
       <IntroElementsList className="intro__elements-list intro-elements-list">
-        <IntroElementsListItem  className="intro-elements-list__item">
+        <IntroElementsListItem className="intro-elements-list__item">
           <IntroElementsListItemImageCell1
-            className="intro-elements-list-item__image intro-elements-list-item__image--cell1"
+            className="intro-elements-list-item__image"
             srcSet={`${cell1Image} 1x, ${cell1ImageRetina} 2x`}
             alt="cell"
             width="63"
             height="57"
-          ></IntroElementsListItemImageCell1>
+            modifier="cell1"
+            isViewActive={index !== currentIndex}
+          />
         </IntroElementsListItem>
-        <IntroElementsListItem  className="intro-elements-list__item">
+        <IntroElementsListItem className="intro-elements-list__item">
           <IntroElementsListItemImageCell2
-            className="intro-elements-list-item__image intro-elements-list-item__image--cell2"
+            className="intro-elements-list-item__image"
             srcSet={`${cell2Image} 1x, ${cell2ImageRetina} 2x`}
             alt="cell"
             width="111"
             height="114"
-          ></IntroElementsListItemImageCell2>
+            modifier="cell2"
+            isViewActive={index !== currentIndex}
+          />
         </IntroElementsListItem>
-        <IntroElementsListItem  className="intro-elements-list__item">
+        <IntroElementsListItem className="intro-elements-list__item">
           <IntroElementsListItemImageCell3
-            className="intro-elements-list-item__image intro-elements-list-item__image--cell3"
+            className="intro-elements-list-item__image"
             srcSet={`${cell3Image} 1x, ${cell3ImageRetina} 2x`}
             alt="cell"
             width="228"
             height="224"
-          ></IntroElementsListItemImageCell3>
+            modifier="cell3"
+            isViewActive={index !== currentIndex}
+          />
         </IntroElementsListItem>
-        <IntroElementsListItem  className="intro-elements-list__item">
+        <IntroElementsListItem className="intro-elements-list__item">
           <IntroElementsListItemImageCell4
-            className="intro-elements-list-item__image intro-elements-list-item__image--cell4"
+            className="intro-elements-list-item__image"
             srcSet={`${cell4Image} 1x, ${cell4ImageRetina} 2x`}
             alt="cell"
             width="73"
             height="71"
-          ></IntroElementsListItemImageCell4>
+            modifier="cell4"
+            isViewActive={index !== currentIndex}
+          />
         </IntroElementsListItem>
-        <IntroElementsListItem  className="intro-elements-list__item">
+        <IntroElementsListItem className="intro-elements-list__item">
           <IntroElementsListItemImageSperm
-            className="intro-elements-list-item__image intro-elements-list-item__image--sperm"
+            className="intro-elements-list-item__image"
             srcSet={`${SpermImage} 1x, ${SpermImageRetina} 2x`}
-            alt="cell"
+            alt="sperm"
             width="592"
             height="93"
-          ></IntroElementsListItemImageSperm>
+            modifier="sperm"
+            isViewActive={index !== currentIndex}
+          />
         </IntroElementsListItem>
       </IntroElementsList>
       <IntroLead className="intro__lead">{t('slider.intro.lead')}</IntroLead>
       <IntroTitle
         className="intro__title"
         dangerouslySetInnerHTML={{ __html: t('slider.intro.title') }}
-      ></IntroTitle>
-      <IntroButton to="/" onClick={handleClick} className="intro__button button">
+      />
+      <IntroButton
+        to="/"
+        onClick={handleClick}
+        className="intro__button button"
+      >
         <Icon name="arrow" width={20} height={14} />
         <span>{t('slider.intro.buttonCaption')}</span>
       </IntroButton>

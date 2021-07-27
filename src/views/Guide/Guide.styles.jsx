@@ -1,6 +1,9 @@
 import styled from 'styled-components/macro';
 import { lighten } from 'polished';
 import SuperQuery from '@themgoncalves/super-query';
+import { useSpring, animated, config } from 'react-spring';
+
+import { ANIMATION } from '../../utils/constants/view.guide.constants';
 import { Button } from '../../styles';
 import guideBgImage from '../../assets/images/guide/guide__bg.png';
 import guideBgImageRetina from '../../assets/images/guide/guide__bg@2x.png';
@@ -12,7 +15,6 @@ export const Guide = styled.section`
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
-  /* align-items: flex-start; */
   width: inherit;
   height: inherit;
   padding-top: 165px;
@@ -29,7 +31,7 @@ export const Guide = styled.section`
 
   &::after {
     content: '';
-    z-index: 666;
+    z-index: 777;
     position: absolute;
     top: 80px;
     left: 50px;
@@ -166,67 +168,180 @@ export const GuideElementsListItem = styled.li`
   display: flex;
 `;
 
-export const GuideElementsListItemImage = styled.img`
+export const GuideElementsListItemImage = styled(animated.img)`
   z-index: 666;
   position: absolute;
   display: flex;
 `;
 
-export const GuideElementsListItemImageBubble1 = styled(
-  GuideElementsListItemImage
-)`
+const StyledBubble1 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 215px;
   left: 75px;
 `;
 
-export const GuideElementsListItemImageBubble2 = styled(
-  GuideElementsListItemImage
-)`
+export const GuideElementsListItemImageBubble1 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble1
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble2 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
+  z-index: 777;
   top: 320px;
   left: 185px;
 `;
 
-export const GuideElementsListItemImageBubble3 = styled(
-  GuideElementsListItemImage
-)`
+export const GuideElementsListItemImageBubble2 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble2
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble3 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 65px;
   left: 200px;
 `;
 
-export const GuideElementsListItemImageBubble4 = styled(
-  GuideElementsListItemImage
-)`
+export const GuideElementsListItemImageBubble3 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble3
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble4 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   bottom: 115px;
   left: 140px;
 `;
 
-export const GuideElementsListItemImageBubble5 = styled(
-  GuideElementsListItemImage
-)`
+export const GuideElementsListItemImageBubble4 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble4
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble5 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   z-index: 777;
   top: 155px;
   left: 185px;
 `;
 
-export const GuideElementsListItemImageBubble6 = styled(
-  GuideElementsListItemImage
-)`
-  z-index: 777;
+export const GuideElementsListItemImageBubble5 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble5
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble6 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
+  z-index: 888;
   bottom: -80px;
   left: 185px;
 `;
 
-export const GuideElementsListItemImageBubble7 = styled(
-  GuideElementsListItemImage
-)`
+export const GuideElementsListItemImageBubble6 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble6
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble7 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   bottom: 280px;
   left: 10px;
 `;
 
-export const GuideElementsListItemImageBubble8 = styled(
-  GuideElementsListItemImage
-)`
+export const GuideElementsListItemImageBubble7 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble7
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledBubble8 = styled(GuideElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   z-index: 777;
   bottom: 140px;
   left: 25px;
 `;
+
+export const GuideElementsListItemImageBubble8 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledBubble8
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};

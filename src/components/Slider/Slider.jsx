@@ -27,11 +27,12 @@ export default () => {
             <SwipeableViews
               index={currentIndex}
               onChangeIndex={handleChangeIndex}
+              enableMouseEvents={true}
             >
               {items.map((element, index) => {
                 return (
                   <Slide key={element.id}>
-                    <View name={element.name} />
+                    <View name={element.name} index={index} />
                   </Slide>
                 );
               })}

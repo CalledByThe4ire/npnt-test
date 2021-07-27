@@ -1,5 +1,9 @@
 import styled from 'styled-components/macro';
+import PropTypes from 'prop-types';
 import SuperQuery from '@themgoncalves/super-query';
+import { useSpring, animated, config } from 'react-spring';
+import { ANIMATION } from '../../utils/constants/view.intro.constants';
+
 import { Button } from '../../styles';
 import introBgImage from '../../assets/images/intro/intro__bg.jpg';
 import introBgImageRetina from '../../assets/images/intro/intro__bg@2x.jpg';
@@ -83,44 +87,119 @@ export const IntroElementsListItem = styled.li`
   display: flex;
 `;
 
-export const IntroElementsListItemImage = styled.img`
+export const IntroElementsListItemImage = styled(animated.img)`
   z-index: 15;
   position: absolute;
   display: flex;
 `;
 
-export const IntroElementsListItemImageCell1 = styled(
-  IntroElementsListItemImage
-)`
+const StyledCell1 = styled(IntroElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 65px;
   right: 215px;
 `;
 
-export const IntroElementsListItemImageCell2 = styled(
-  IntroElementsListItemImage
-)`
+export const IntroElementsListItemImageCell1 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledCell1
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledCell2 = styled(IntroElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 200px;
   right: 50px;
 `;
 
-export const IntroElementsListItemImageCell3 = styled(
-  IntroElementsListItemImage
-)`
+export const IntroElementsListItemImageCell2 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledCell2
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledCell3 = styled(IntroElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   bottom: -100px;
   right: 255px;
 `;
 
-export const IntroElementsListItemImageCell4 = styled(
-  IntroElementsListItemImage
-)`
+export const IntroElementsListItemImageCell3 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledCell3
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledCell4 = styled(IntroElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   z-index: 0;
   left: 20px;
   bottom: 190px;
 `;
 
-export const IntroElementsListItemImageSperm = styled(
-  IntroElementsListItemImage
-)`
+export const IntroElementsListItemImageCell4 = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledCell4
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+const StyledSperm = styled(IntroElementsListItemImage).attrs((props) => ({
+  className: `${props.className}--${props.modifier}`,
+}))`
   top: 155px;
   right: 0;
 `;
+
+export const IntroElementsListItemImageSperm = ({
+  modifier,
+  isViewActive,
+  ...otherProps
+}) => {
+  return (
+    <StyledSperm
+      modifier={modifier}
+      {...otherProps}
+      style={useSpring(ANIMATION[modifier](isViewActive, config.molasses))}
+    />
+  );
+};
+
+IntroElementsListItemImage.propTypes = {
+  modifier: PropTypes.string.isRequired,
+  isViewActive: PropTypes.bool.isRequired,
+};

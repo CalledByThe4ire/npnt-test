@@ -19,6 +19,7 @@ const View = (props) => {
 
 View.propTypes = {
   name: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default View;
